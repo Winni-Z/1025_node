@@ -11,7 +11,7 @@
     初始化包的命令:npm init
     包名要求：不能有中文、不能大写字母
 
-* 3.npm与node的关系？
+* 3.npm与node的关系？(node package manager)
 *   安装ndoe之后，自动会安装一个npm包管理器。
 *
 * 4.npm的常用命令：
