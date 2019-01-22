@@ -9,7 +9,7 @@ let promise = new Promise((resolve,reject)=>{
   mongoose.connection.once('open',(err)=>{
     if(!err){
       console.log('数据库连接成功了！')
-      resolve();
+      reject();
     }else{
       reject(err);
       console.log(err)
