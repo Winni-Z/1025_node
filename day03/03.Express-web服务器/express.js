@@ -32,7 +32,6 @@ app.get('/test1',(request,response)=>{
   *  2.response是响应对象，服务器给客户端的响应都在这里
   * */
   const str =  request.query
-  console.log(str);
 
   /*
   * 在express中:
