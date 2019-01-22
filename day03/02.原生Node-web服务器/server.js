@@ -1,7 +1,7 @@
 //1.引入http模块，在node中http模块是他的核心模块，无下载，直接引用。
 const http = require('http');
 //2.引入querystring模块
-const querystring = require('querystring')
+const {parse} = require('querystring')
 
 //3.创建服务对象
 const server = http.createServer((request,response)=>{
@@ -14,7 +14,7 @@ const server = http.createServer((request,response)=>{
   * */
 
   const str = request.url.split('?')[1]
-  console.log(querystring.parse(str));
+  console.log(parse(str));
 
   //设置响应头
   response.setHeader('content-type','text/html;charset=utf-8')

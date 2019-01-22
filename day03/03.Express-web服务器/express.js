@@ -4,12 +4,17 @@ const express = require('express');
 const app = express();
 //3.隐藏掉X-Powered-By: Express
 app.disable('x-powered-by')
+//4.定义端口号
+const PORT = 3000
 
 //路由（后台路由），概念：对前端请求url类型的分类，目的是方便后台去处理请求
 /*
 * 满足一下两点即可进入该路由
 *   1.请求方式必须是GET
-*   2.请求路径（url）必须是：http://localhost:3000/test1
+*   2.请求路径（url）必须是以下几种：
+*       1.http://localhost:3000/test1
+*       2.http://127.0.0.1:3000/test1
+*       3.http://192.168.11.58:3000/test1
 * GET与POST请求：
 *   1.什么时候用GET请求？
 *       -单纯获取东西的时候用GET请求
@@ -39,11 +44,12 @@ app.get('/test1',(request,response)=>{
 //处理POST请求
 app.post('/test2',(request,response)=>{
 
+  response.send('ok')
 })
 
-app.listen(3000,err=>{
+app.listen(PORT,err=>{
   if(!err){
-    console.log('服务器启动成功了，端口号是3000')
+    console.log(`服务器启动成功了，端口号是${PORT}`)
   }else{
     console.log(err)
   }
