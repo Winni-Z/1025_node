@@ -17,6 +17,7 @@ app.use(express.static('public'))
 
 db
   .then(()=>{
+
     //注册路由
     app.post('/register',async(req,res)=>{
       /*
@@ -61,6 +62,7 @@ db
         if(!findData){
           //4.如果没有注册过，将信息写入到数据库中.
           await Users.create({userName,pwd,email})
+          console.log(`${userName},${email}注册成功`)
           res.send('用户注册成功')
           return
         }else{
@@ -74,15 +76,41 @@ db
 
     })
     //登录路由
-    app.post('/login',(req,res)=>{
+    app.post('/login',async(req,res)=>{
+      /*
+      * 1.获取用户的输入
+      * 2.直接去数据库中查找当前登录的信息（一般会再次校验数据的合法性）
+      * 3.查到了，登录成功，查不到，登录失败
+      * */
+      //1.获取用户的输入
+      const {pwd,email} = req.body
 
+      try{
+        //查询数据库
+        const finData = await Users.findOne({pwd,email})
+        if(!finData){
+          res.send('用户名或密码输入错误')
+        }else{
+          res.redirect('https://www.baidu.com')
+        }
+      }catch(err){
+        console.log(err);
+        res.send('网络不稳定，请稍后重试！')
+      }
+    })
+
+    //登录界面路由(UI路由)
+    app.get('/login',(req,res)=>{
+      res.sendFile(__dirname+'/public/login.html')
+    })
+    //注册页面路由(UI路由)
+    app.get('/register',(req,res)=>{
+      res.sendFile(__dirname+'/public/register.html')
     })
   })
   .catch((err)=>{
     console.log(err);
   })
-
-
 
 //监听端口号
 app.listen(PORT,(err)=>{
