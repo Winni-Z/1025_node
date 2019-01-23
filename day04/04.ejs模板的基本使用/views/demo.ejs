@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--这是我第一次接触ejs模板，还不怎么会用-->
+
+<!--
+      1.< % % > 能执行任意代码，但是不向客户端输入任何的内容
+      2.< %= % > 能输出内容到页面，不渲染标签，（转义了）
+      3.< %- % > 能输出内容到页面，渲染标签，（没转义）
+-->
+
+<% for (var i=0; i<data.length; i++ ){ %>
+
+        <h3><%=data[i].name %></h3>
+        <h2><%=data[i].age %></h2>
+
+ <% } %>
+
+
+
+<!--< %=data % >
+< %-data % >-->
+
+</body>
+</html>
