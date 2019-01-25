@@ -22,7 +22,7 @@ app.set("views","./views")
 
 //处理GET请求
 app.get('/test1',(req,res)=>{
-  const data = [{name:"a",age:12},{name:"b",age:13}]
+  const data = [{name:"小猪佩奇",age:12},{name:"乔治",age:13}]
   res.render('demo',{data})
 })
 

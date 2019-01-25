@@ -41,7 +41,7 @@ app.use(express.static('public'))
 *   3.内置中间件：
 *       express内置的中间件
 *       app.use(express.urlencoded({extended:true}))
-*
+*       app.use(express.static('public'))
 *   4.路由器中间件
 *       Router
 *
