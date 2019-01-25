@@ -102,7 +102,9 @@ router.post('/login',async(req,res)=>{
       res.render('login',{errMsg})
     }else{
       // res.redirect('https://www.baidu.com')
-      res.redirect('/userCenter?userName='+finData.userName)
+      // res.redirect('/userCenter?userName='+finData.userName)
+      res.cookie('userid',finData._id,{maxAge:1000*30})
+      res.redirect('/userCenter')
     }
   }catch(err){
     console.log(err);

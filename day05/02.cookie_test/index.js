@@ -27,8 +27,10 @@
 * */
 
 const express = require('express')
+//引入cookie-parser用来获取浏览器发送过来的cookie
 const cookieParser = require('cookie-parser')
 const app = express()
+//使用中间件
 app.use(cookieParser())
 const PORT = 3000
 
@@ -61,7 +63,7 @@ app.get('/test2',(req,res)=>{
 app.get('/test3',(req,res)=>{
 
   // 删除cookie的第一种方法
-  req.clearCookie()
+  res.clearCookie()
   res.send('test3-----------ok')
 
   //删除cookie的第二种方法
