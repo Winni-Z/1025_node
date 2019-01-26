@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ajax_get</title>
+  <title>ajax_post</title>
 </head>
 <body>
 
-<button id="btn">点我发送ajax的GET请求</button>
+<button id="btn">点我发送ajax的POST请求</button>
 
 <script>
   /*
@@ -60,25 +60,13 @@
     }
 
     //3.设置请求信息（请求方式、请求地址、请求参数等）。
-    xhr.open('GET','http://127.0.0.1:3000/testAjax?name=peiqi&age=12&t='+Date.now())
-    //设置请求头信息（GET中用的不多）
-    xhr.setRequestHeader('content-type','text/plain')//告诉服务器你发送的是一个纯文本数据
+    xhr.open('POST','http://127.0.0.1:3000/testAjax2')
+    //设置请求头信息（POST中常写如下请求头）
+    //POST请求使用的是urlencoded编码方式携带的参数，必须要和服务器说明一下
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
 
     //4.发送请求。
-    xhr.send()
-    
-    
-    /*
-    * 对于chrome和firefox浏览器：
-    *   只要get请求的请求地址和请求参数都不发生变化，那么会走缓存（协商缓存）
-    * 对于IE浏览器：
-    *   只要get请求的请求地址和请求参数都不发生变化，那么会走强缓存
-    *   问题：数据第二次请求的时候不能更新
-    *   解决：传递一个无关紧要的参数，一般传时间戳
-    *
-    * */
-    
-    
+    xhr.send('name=peiqi&age=12')
   })
   
   
