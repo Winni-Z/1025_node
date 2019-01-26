@@ -24,6 +24,7 @@ router.get('/login',(req,res)=>{
   // const filePath = resolve(__dirname,'../public/login.html')
   // res.sendFile(filePath)
   const {email} = req.query
+
   res.render('login',{errMsg:{email}})
 })
 //注册页面路由(UI路由)

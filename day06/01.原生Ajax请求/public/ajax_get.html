@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ajax_get</title>
+</head>
+<body>
+
+<button id="btn">点我发送ajax的GET请求</button>
+
+<script>
+  /*
+  * 一个原生Ajax请求的步骤：
+  *   1.创建XMLHttpRequest对象，一般命名为xhr。
+  *   2.绑定一个监听，名为：onreadystatechange.
+  *   3.设置请求信息（请求地址、请求参数等）。
+  *   4.发送请求。
+  * */
+  
+  let btn = document.getElementById('btn');
+  btn.addEventListener('click',function () {
+    
+    //1.创建XMLHttpRequest对象，一般命名为xhr
+    let xhr = new XMLHttpRequest();
+
+    //2.绑定监听
+    xhr.onreadystatechange = function () {
+      /*
+      * 在xhr内部有一个状态，分为5中：
+      *     0：xhr对象已经创建了，但是还没有调用open方法,初始化状态。
+      *     1：send方法还没有被调用，依然可以修改请求信息（请求头）
+      *     2：send方法被调用了，不可以再去修改任何请求信息，并且已经回来一部分数据（响应首行，响应头）
+      *     3：回来一部分数据，但是有可能数据不完整，有待进一步接收（如果响应的是纯文本或比较小数据，会在这一阶段直接全部接收）
+      *     4：数据全部回来了。
+      *
+      *
+      * */
+      if(xhr.readyState === 4 && xhr.status === 200){
+        console.log(xhr.responseText)
+      }
+      
+      //这一个过程看不到输出，一般不在整理处理一些逻辑。
+/*      if(xhr.readyState === 0){
+        console.log(11111)
+      }
+
+      if(xhr.readyState === 1){
+        console.log('readyState------------1')
+        xhr.setRequestHeader('demo',123)
+      }
+
+      if(xhr.readyState === 2){
+        console.log('readyState------------2')
+        console.log(xhr.status,xhr.getResponseHeader('date'))
+      }
+      
+      if(xhr.readyState === 3){
+        console.log('readyState------------3')
+        console.log('@@@@',xhr.responseText)
+      }*/
+      
+    }
+
+    //3.设置请求信息（请求方式、请求地址、请求参数等）。
+    xhr.open('GET','http://127.0.0.1:3000/testAjax?name=peiqi&age=12')
+    //设置请求头信息（GET中用的不多）
+    xhr.setRequestHeader('content-type','text/plain')//告诉服务器你发送的是一个纯文本数据
+
+    //4.发送请求。
+    xhr.send()
+  })
+  
+  
+</script>
+
+</body>
+</html>

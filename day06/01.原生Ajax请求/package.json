@@ -1,0 +1,9 @@
+{
+  "name": "ajax_demo_1025",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
