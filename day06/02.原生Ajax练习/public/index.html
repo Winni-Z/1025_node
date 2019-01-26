@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ajax_get</title>
+</head>
+<body>
+
+<button id="btn">点我获取验证码</button>
+
+<script>
+  
+  let btn = document.getElementById('btn');
+  let lastXHR = null //缓存上一次的xhr对象
+  btn.addEventListener('click',function () {
+    //判断是否有上一次的请求
+    if(lastXHR){
+      lastXHR.abort()//取消本次请求
+    }
+    lastXHR =  getCode('GET','http://127.0.0.1:3000/getCode')
+  })
+  
+  //该方法用于获取验证码
+  function getCode(method,url) {
+    //1.创建XMLHttpRequest对象，一般命名为xhr
+    let xhr = new XMLHttpRequest();
+
+    //2.绑定监听
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState === 4 && xhr.status === 200){
+        console.log(xhr.responseText)
+      }
+    }
+
+    //3.设置请求信息（请求方式、请求地址、请求参数等）。
+//    xhr.open('GET','http://127.0.0.1:3000/getCode')
+    xhr.open(method,url)
+
+    //4.发送请求。
+    xhr.send()
+    return xhr
+  }
+  
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<button id="btn">点我获取数据</button>
+
+<script>
+  $('#btn').click(function () {
+    /*
+    * 用jQuery发送Ajax请求的步骤：
+    *    1.method:请求方式。
+    *    2.data:请求参数
+    *    3.success：成功的回调
+    *    4.error:失败的回调
+    *
+    * */
+    
+    //jQuery的第一种发送GET请求的方式
+    /*    $.ajax('http://127.0.0.1:3000/testAjax',{
+      method:'GET',
+      data:{
+        name:'peiqi',
+        age:12
+      },
+      success:function (data) {
+        console.log(data)
+      },
+      error:function (err) {
+        console.log(err);
+      }
+    })*/
+
+
+    //jQuery的第一种发送POST请求的方式
+    /*    $.ajax('http://127.0.0.1:3000/testAjax2',{
+      method:'POST',
+      data:{
+        name:'peiqi',
+        age:12
+      },
+      success:function (data) {
+        console.log(data)
+      },
+      error:function (err) {
+        console.log(err);
+      }
+    })*/
+    
+    //简写方式之GET
+    /*$.get('http://127.0.0.1:3000/testAjax',{username:'peiqi',age:12},(data)=>{
+      console.log(data);
+    })*/
+
+    //简写方式之POST
+    $.post('http://127.0.0.1:3000/testAjax2',{username:'peiqi',age:12},(data)=>{
+      console.log(data);
+    })
+  })
+  
+</script>
+
+
+
+</body>
+</html>
