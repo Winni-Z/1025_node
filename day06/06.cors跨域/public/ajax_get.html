@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ajax_get</title>
+</head>
+<body>
+
+<button id="btn">点我发送ajax的GET请求</button>
+
+<script>
+  let btn = document.getElementById('btn');
+  btn.addEventListener('click',function () {
+    
+    //1.创建XMLHttpRequest对象，一般命名为xhr
+    let xhr = new XMLHttpRequest();
+
+    //2.绑定监听
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState === 4 && xhr.status === 200){
+        console.log(xhr.responseText)
+      }
+    }
+
+    //3.设置请求信息（请求方式、请求地址、请求参数等）。
+    xhr.open('GET','http://127.0.0.1:3000/testAjax?name=peiqi&age=12&t='+Date.now())
+    //设置请求头信息（GET中用的不多）
+    xhr.setRequestHeader('content-type','text/plain')//告诉服务器你发送的是一个纯文本数据
+
+    //4.发送请求。
+    xhr.send()
+    
+  })
+  
+  
+</script>
+
+</body>
+</html>
